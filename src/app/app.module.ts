@@ -17,7 +17,16 @@ import { ElectronService } from './providers/electron.service';
 import { WebviewDirective } from './directives/webview.directive';
 
 import { AppComponent } from './app.component';
-import { HomeComponent } from './components/home/home.component';
+import { GsPresentationComponentComponent } from './components/gs-presentation-component/gs-presentation-component.component';
+import { GsMainWrapperComponentComponent } from './components/gs-main-wrapper-component/gs-main-wrapper-component.component';
+import { GsConnectionServiceComponent } from './services/gs-connection-service/gs-connection-service.component';
+import { GsComputingDataServiceComponent } from './services/gs-computing-data-service/gs-computing-data-service.component';
+import { GsGeneralMenuComponentComponent } from './components/menu-options/gs-general-menu-component/gs-general-menu-component.component';
+import { GsTestsComponentComponent } from './components/menu-options/gs-tests-component/gs-tests-component.component';
+import { GsSaveDataComponentComponent } from './components/menu-options/gs-save-data-component/gs-save-data-component.component';
+import { GsGraphDataComponentComponent } from './components/menu-options//gs-graph-data-component/gs-graph-data-component.component';
+import { GsFlightMonitorComponentComponent } from './components/menu-options//gs-flight-monitor-component/gs-flight-monitor-component.component';
+import { GsPadComponentComponent } from './components/menu-options/monitor-options/gs-pad-component/gs-pad-component.component';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -27,8 +36,15 @@ export function HttpLoaderFactory(http: HttpClient) {
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
-    WebviewDirective
+    WebviewDirective,
+    GsPresentationComponentComponent,
+    GsMainWrapperComponentComponent,
+    GsGeneralMenuComponentComponent,
+    GsTestsComponentComponent,
+    GsSaveDataComponentComponent,
+    GsGraphDataComponentComponent,
+    GsFlightMonitorComponentComponent,
+    GsPadComponentComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +59,11 @@ export function HttpLoaderFactory(http: HttpClient) {
       }
     })
   ],
-  providers: [ElectronService],
+  providers: [
+    ElectronService,
+    GsConnectionServiceComponent,
+    GsComputingDataServiceComponent
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

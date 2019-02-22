@@ -4,4 +4,22 @@ html, body {
   padding: 0;
 
   height: 100%;
+  width: 100%;
+}
+
+.btn {
+  padding: 10px 20px;
+  border-radius: 5%;
+  text-decoration: initial;
+}
+
+.btn-2 {
+  width: 70px;
+  height: 70px;
+  text-decoration: initial;
+}
+
+.back-area {
+  position: absolute;
+  left: 70px;
 }

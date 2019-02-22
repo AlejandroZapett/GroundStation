@@ -1,0 +1,32 @@
+.back {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    background-color: #f2f2f2;
+}
+
+.left-menu {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    background-color: #404040;
+
+    height: 100%;
+    width: 70px;
+    
+    display: flex;
+    flex-direction: column;
+
+    margin: 0;
+    padding: 0;
+
+    a {
+        margin: 0;
+        padding: 0;
+        color: white;
+        background-color: transparent;
+        border-bottom: 1px solid white;
+    }
+}
