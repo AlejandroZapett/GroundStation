@@ -1,10 +1,13 @@
-import { app, BrowserWindow, screen } from 'electron';
+import { app, BrowserWindow, screen, ipcMain } from 'electron';
 import * as path from 'path';
 import * as url from 'url';
+import * as fs from 'fs';
+import * as os from 'os';
 
 let win, serve;
 const args = process.argv.slice(1);
 serve = args.some(val => val === '--serve');
+//const dir = '/Users/{username}/FlightData';
 
 function createWindow() {
 
@@ -72,3 +75,26 @@ try {
   // Catch Error
   // throw e;
 }
+
+ipcMain.on('getFiles', (event, arg) => {
+
+  var dir = os.userInfo().homedir + "/FlightFiles";
+
+  if (!fs.existsSync(dir)){
+    fs.mkdirSync(dir);
+  }
+
+  const files = fs.readdirSync(dir);
+  win.webContents.send("getFilesResponse", files);
+
+});
+
+ipcMain.on("getFileContent", (event, arg) => {
+  
+  var dir = os.userInfo().homedir + "/FlightFiles/"+arg;
+  
+  var content = fs.readFileSync(dir, 'utf8');
+
+  win.webContents.send("getFileContentResponse", content);
+
+});

@@ -1,3 +1,109 @@
-<p>
-  gs-graph-data-component works!
-</p>
+<div class="back-area">
+
+  <!--==========================================-->
+  <!--================ Header ==================-->
+  <h1>Graphs</h1>
+  <p>
+    The graphs of the data obtained in the flight of a rocket are shown here. 
+    It is recommended to select the files with .recorded extension to have 
+    more data fidelity.
+  </p>
+  <!--==========================================-->
+
+  <!--==========================================-->
+  <!--======== File selector button ============-->
+  
+  <ng-template #content let-c="close" let-d="dismiss">
+      <div class="modal-header">
+        <h4 class="modal-title">Select the flight file</h4>
+        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+  
+      <div class="modal-body">
+        <button *ngFor="let file of files" 
+                (click)="getFileContent(file)" 
+                (click)="d('Cross click')" 
+                type="button" 
+                class="btn btn-light">
+          {{ file }}
+        </button>
+      </div>
+  
+    </ng-template>
+
+    <button class="square-button" (click)="getFiles(content)" *ngIf="isFileSelected == false">
+      Select the flight computer
+    </button>
+     <!--==========================================-->
+
+    <!--==========================================-->
+    <!--=============== Graph Area ===============-->
+    <div class="graph-area" *ngIf="isFileSelected == true">
+      <div class="graph">
+        <!--================ Altitude ==================-->
+        <div class="flex">
+          <div class="flex-item">
+            <div style="display: block;">
+              <canvas baseChart width="1000" height="500"
+              [datasets]="lineChartDataAltitude"
+              [labels]="lineCommonChartLabels"
+              [options]="lineChartOptions"
+              [colors]="lineChartColorsAltitude"
+              [legend]="lineChartLegend"
+              [chartType]="lineChartType"
+              [plugins]="lineChartPlugins"
+              (chartHover)="chartHovered($event)"
+              (chartClick)="chartClicked($event)"></canvas>
+            </div>
+          </div>
+      </div>
+      <div class="graph">
+        <!--================ Pressure ==================-->
+        <div class="flex">
+          <div class="flex-item">
+            <div style="display: block;">
+              <canvas baseChart width="1000" height="500"
+              [datasets]="lineChartDataPressure"
+              [labels]="lineCommonChartLabels"
+              [options]="lineChartOptions"
+              [colors]="lineChartColorsPressure"
+              [legend]="lineChartLegend"
+              [chartType]="lineChartType"
+              [plugins]="lineChartPlugins"
+              (chartHover)="chartHovered($event)"
+              (chartClick)="chartClicked($event)"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="graph">
+        <!--=============== Temperature ================-->
+        <div class="flex">
+          <div class="flex-item">
+            <div style="display: block;">
+              <canvas baseChart width="1000" height="500"
+              [datasets]="lineChartDataTemp"
+              [labels]="lineCommonChartLabels"
+              [options]="lineChartOptions"
+              [colors]="lineChartColorsTemp"
+              [legend]="lineChartLegend"
+              [chartType]="lineChartType"
+              [plugins]="lineChartPlugins"
+              (chartHover)="chartHovered($event)"
+              (chartClick)="chartClicked($event)"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+     <!--==========================================-->
+    <button 
+      (click)="newFile()" 
+      type="button" 
+      class="btn btn-danger">
+      Select another file
+    </button>
+</div>
+</div>

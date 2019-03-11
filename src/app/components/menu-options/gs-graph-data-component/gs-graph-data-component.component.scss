@@ -1,0 +1,38 @@
+.flex {
+    flex-direction: row;
+}
+
+.back-area {
+    padding: 5vw;
+    overflow: scroll;
+    height: 100%;
+    width: calc( 100% - 70px);
+    overflow: scroll;
+    overflow-y: scroll;
+
+}
+
+.modal-body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.btn {
+    margin: 10px;
+    border: 1px solid black;
+    min-width: 300px;
+}
+
+.canvas {
+    max-height: 100vh;
+    max-width: 100vh;
+}
+
+.graph {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}

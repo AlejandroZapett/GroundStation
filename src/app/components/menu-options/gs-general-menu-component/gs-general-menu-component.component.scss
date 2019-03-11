@@ -1,0 +1,22 @@
+.back-area {
+    padding-top: 50px;
+    width: 90%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.options {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    margin-top: 50px;
+    max-width: 600px;
+}
+
+a {
+    color: black;
+}

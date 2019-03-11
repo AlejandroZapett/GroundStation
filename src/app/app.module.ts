@@ -16,6 +16,9 @@ import { ElectronService } from './providers/electron.service';
 
 import { WebviewDirective } from './directives/webview.directive';
 
+//Ng bootstrap
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
 import { AppComponent } from './app.component';
 import { GsPresentationComponentComponent } from './components/gs-presentation-component/gs-presentation-component.component';
 import { GsMainWrapperComponentComponent } from './components/gs-main-wrapper-component/gs-main-wrapper-component.component';
@@ -27,7 +30,11 @@ import { GsSaveDataComponentComponent } from './components/menu-options/gs-save-
 import { GsGraphDataComponentComponent } from './components/menu-options//gs-graph-data-component/gs-graph-data-component.component';
 import { GsFlightMonitorComponentComponent } from './components/menu-options//gs-flight-monitor-component/gs-flight-monitor-component.component';
 import { GsPadComponentComponent } from './components/menu-options/monitor-options/gs-pad-component/gs-pad-component.component';
-
+import { GsStorageDataService } from './services/gs-storage-data-service/gs-storage-data-service.component';
+import { GsConnectionSerialService } from './services/gs-connection-service/gs-connection-serial-service';
+import { GsFileSystemService } from './services/gs-file-system-service/gs-file-system-service';
+import { GsParseService } from './services/gs-parse-service/gs-parse-service';
+import { ChartsModule } from 'ng2-charts';
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -47,6 +54,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     GsPadComponentComponent
   ],
   imports: [
+    ChartsModule,
+    NgbModule.forRoot(),
     BrowserModule,
     FormsModule,
     HttpClientModule,
@@ -62,8 +71,14 @@ export function HttpLoaderFactory(http: HttpClient) {
   providers: [
     ElectronService,
     GsConnectionServiceComponent,
-    GsComputingDataServiceComponent
+    GsComputingDataServiceComponent,
+    GsStorageDataService,
+    GsConnectionSerialService,
+    GsFileSystemService,
+    GsParseService
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [
+    AppComponent
+  ]
 })
 export class AppModule { }

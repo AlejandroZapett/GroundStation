@@ -1,5 +1,59 @@
 .back-area {
     position: absolute;
     left: 70px;
+    padding: 5vw;
 }
 
+.log-area {
+    border-radius: 10px;
+    background-color: transparent;
+    margin-top: 10px;
+    width: 100%;
+    
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    .square-log-area{
+        width: 315px;
+        height: 200px;
+        border: black 1px solid;
+        border-radius: 8px;
+        margin: 10px;
+        padding: 10px;
+    }
+    .large-log-area {
+        width: 990px;
+        padding: 10px;
+        min-height: 50px;
+        border: black 1px solid;
+        border-radius: 8px;
+        margin: 10px;
+    }
+}
+
+.square-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 250px;
+    height: 190px;
+    margin: 10px;
+    border: black 1px solid;
+    border-radius: 8px;
+    background-color: transparent;
+}
+
+.btn {
+    margin: 10px;
+    border: 1px solid black;
+    min-width: 300px;
+}
+
+.modal-body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}

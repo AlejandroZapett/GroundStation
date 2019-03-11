@@ -1,5 +1,86 @@
+<!--===============================================-->
+<!--================ Main Area ====================-->
 <div class="back-area">
+  <!--==========================================-->
+  <!-- Headers and visual design implementation -->
+  <h1>Tests</h1>
   <p>
-    gs-tests-component works!
+    It is recommended before starting the rocket flight, to verify that the
+    telecommunication systems are functioning correctly.
   </p>
+  <!--==========================================-->
+
+  <!--==========================================-->
+  <!--======== Port selector button ============-->
+  
+  <ng-template #content let-c="close" let-d="dismiss">
+    <div class="modal-header">
+      <h4 class="modal-title">Select the flight computer</h4>
+      <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+
+    <div class="modal-body">
+      <button *ngFor="let port of tableData.dataRows" 
+              (click)="setPortID(port.comName)" 
+              (click)="d('Cross click')" 
+              type="button" 
+              class="btn btn-light">
+        {{ port.comName }}
+      </button>
+    </div>
+
+  </ng-template>
+
+  <button class="square-button" (click)="scanPorts(content)" *ngIf="isPortSelected == false">
+    Select the flight computer
+  </button>
+  <!--==========================================-->
+
+  <!--==========================================-->
+  <!--================ Log Area ================-->
+  <div class="log-area" *ngIf="isPortSelected">
+
+    <div class="square-log-area">
+      <p>Arduino Uno</p>
+      <p>Puerto: {{ portID }}</p>
+    </div>
+
+    <div class="square-log-area">
+      <div class="square-conf" *ngIf="isConnection"> Connection confirmed </div>
+      <div class="square-fail" *ngIf="isConnection == false"> Connection failed </div>
+    </div>
+
+    <div class="square-log-area">
+      <p>Last recorded time: {{ lastTime }}</p>
+    </div>
+
+    <div class="large-log-area">
+      <p>
+        Last message: {{ screen }}
+      </p>
+    </div>
+    
+    <div class="large-log-area" *ngIf="isConnection">
+      <p *ngFor="let message of fifolog">
+        {{ message }}
+      </p>
+    </div>
+
+    <!--=============================-->
+    <!--Implement verification system-->
+    <!--=============================-->
+
+    <button 
+        (click)="closeConnection()" 
+        type="button" 
+        class="btn btn-danger">
+          Close Port
+    </button>
+
+
+  </div>
+  <!--==========================================-->
 </div>
+<!--===============================================-->

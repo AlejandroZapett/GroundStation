@@ -4,6 +4,7 @@ import { GsMainWrapperComponentComponent } from './components/gs-main-wrapper-co
 import { GsPresentationComponentComponent } from './components/gs-presentation-component/gs-presentation-component.component';
 import { GsTestsComponentComponent } from './components/menu-options/gs-tests-component/gs-tests-component.component';
 import { GsGeneralMenuComponentComponent } from './components/menu-options/gs-general-menu-component/gs-general-menu-component.component';
+import { GsGraphDataComponentComponent } from './components/menu-options/gs-graph-data-component/gs-graph-data-component.component';
 
 const routes: Routes = [
     {
@@ -15,7 +16,8 @@ const routes: Routes = [
         component: GsMainWrapperComponentComponent,
         children: [
             {path: 'tests', component: GsTestsComponentComponent},
-            {path: 'menu', component: GsGeneralMenuComponentComponent}
+            {path: 'menu', component: GsGeneralMenuComponentComponent},
+            {path: 'graph', component: GsGraphDataComponentComponent}
         ]
     }
 ];
