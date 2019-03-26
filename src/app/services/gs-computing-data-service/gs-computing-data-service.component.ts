@@ -8,4 +8,12 @@ export class GsComputingDataServiceComponent implements OnInit {
   ngOnInit() {
   }
 
+  //Filtro Kahlman
+
+  //Set Time
+
+  //Acceleration 
+
+  //Velocity
+
 }

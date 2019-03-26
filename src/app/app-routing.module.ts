@@ -5,6 +5,7 @@ import { GsPresentationComponentComponent } from './components/gs-presentation-c
 import { GsTestsComponentComponent } from './components/menu-options/gs-tests-component/gs-tests-component.component';
 import { GsGeneralMenuComponentComponent } from './components/menu-options/gs-general-menu-component/gs-general-menu-component.component';
 import { GsGraphDataComponentComponent } from './components/menu-options/gs-graph-data-component/gs-graph-data-component.component';
+import { GsFlightMonitorComponentComponent } from './components/menu-options/gs-flight-monitor-component/gs-flight-monitor-component.component';
 
 const routes: Routes = [
     {
@@ -17,7 +18,11 @@ const routes: Routes = [
         children: [
             {path: 'tests', component: GsTestsComponentComponent},
             {path: 'menu', component: GsGeneralMenuComponentComponent},
-            {path: 'graph', component: GsGraphDataComponentComponent}
+            {path: 'graph', component: GsGraphDataComponentComponent},
+            {
+                path: 'monitor', 
+                component: GsFlightMonitorComponentComponent
+            }
         ]
     }
 ];

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+
 @Component({
   selector: 'app-gs-general-menu-component',
   templateUrl: './gs-general-menu-component.component.html',

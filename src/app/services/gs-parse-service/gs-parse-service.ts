@@ -25,7 +25,8 @@ export class GsParseService {
                         content: {
                             pressure: idContent[0].split(":")[1],
                             altitude: idContent[1].split(":")[1],
-                            temperature: idContent[2].split(":")[1]
+                            temperature: idContent[2].split(":")[1],
+                            temperatureFC: idContent[3].split(":")[1]
                         }
                     }
                     flightContent.push(json);

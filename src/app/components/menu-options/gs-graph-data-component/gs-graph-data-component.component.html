@@ -15,7 +15,7 @@
   
   <ng-template #content let-c="close" let-d="dismiss">
       <div class="modal-header">
-        <h4 class="modal-title">Select the flight file</h4>
+        <h4 class="modal-title">Select a flight file</h4>
         <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -34,7 +34,7 @@
     </ng-template>
 
     <button class="square-button" (click)="getFiles(content)" *ngIf="isFileSelected == false">
-      Select the flight computer
+      Select a flight file
     </button>
      <!--==========================================-->
 

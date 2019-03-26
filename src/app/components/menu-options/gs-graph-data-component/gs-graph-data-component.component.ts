@@ -56,7 +56,7 @@ export class GsGraphDataComponentComponent implements OnInit {
 
   //Altitude Chart
   public lineChartDataAltitude: ChartDataSets[] = [
-    { data: [], label: 'Altitude' }
+    { data: [], label: 'Altitude', pointRadius: 0.5, borderWidth: 0.5 }
   ]; //variable
   public lineChartColorsAltitude: Color[] = [
     { // grey
@@ -84,7 +84,7 @@ export class GsGraphDataComponentComponent implements OnInit {
           id: 'y-axis-0',
           position: 'left',
           ticks:{
-            min:0
+            min:0,
           }
         }
       ]

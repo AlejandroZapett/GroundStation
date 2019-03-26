@@ -1,6 +1,6 @@
 [# Introduction
 
-Project with Angular 7 and Electron (Typescript + SASS + Hot Reload).
+Project with Angular 7 and Electron.
 
 Currently runs with:
 

@@ -8,7 +8,7 @@ declare interface dataRow {
   id?: number;
   comName?: string;
   manufacturer?: string;
-  vendorId?: string;
+  vendorId?: string;  
   productId?: string;
 }
 
@@ -42,16 +42,10 @@ export class GsTestsComponentComponent implements OnInit, OnDestroy {
   
   //===============
   //Debug variables
-  public letrero:string = "";
-  public arr = [];
-  public message:string = "Test: ";
-  public FNumber:string = ""; //it represents the number of the flight we want to search
-  closeResult: string;
   //===============
 
   constructor(
     private connection: GsConnectionServiceComponent,
-    private storage: GsStorageDataService,
     private ref: ChangeDetectorRef,
     private modalService: NgbModal
   ) { 
@@ -93,7 +87,7 @@ export class GsTestsComponentComponent implements OnInit, OnDestroy {
     //===================================================
     //To establish the connection, the ports are scanned 
     //for devices.
-    this.tableData = this.connection.scan(); //implement a filter
+    this.tableData = this.connection.scan(); //implement a filter <----------
     console.log(this.tableData);
     //===================================================
   }
@@ -143,6 +137,11 @@ export class GsTestsComponentComponent implements OnInit, OnDestroy {
   public setTime(){
     var date = Date.now();
     this.lastTime = (date - this.timeRecord)/1000;
+    if (this.lastTime > 5){
+      this.isConnection = false;
+    } else {
+      this.isConnection = true;
+    }
   }
 
   public closeConnection(){
@@ -166,57 +165,6 @@ export class GsTestsComponentComponent implements OnInit, OnDestroy {
     this.parser = null;
     this.isConnection = false;
     this.screen = "";
-  }
-
-
-  private getTelemetryData(){
-    //cuando se haya establecido la conexión recuperamos la información
-    //proveniente del prueto serial
-
-    ////Debug data
-    //telemetry item example
-    this.FNumber = "1";
-    var item = {
-      'id': '',
-      'type': 'telemetry',
-      'time': '',
-      'preassure': '',
-      'temperature': '',
-      'position': '',
-      'velocity': '',
-      'acceleration': '',
-      'high': ''
-    }
-    //Telemetry object
-    var td = new TelemetryData();
-    td.setData(item);
-
-    return td
-  }
-
-  private storageData(){
-    //Almacenamos los datos una vez se haya terminado el vuelo
-    var object = this.getTelemetryData();
-    //Se almacena el objeto TelemetryData con su respectivo número de vuelo
-    this.storage.storageTelemtryData(this.FNumber, object);
-  }
-
-  private getStorageData(FNumber){
-    return this.storage.getTelemetryData(FNumber);
-  }
-
-  public Debug(){
-    console.log("Debugging...");
-    this.storageData();
-    var object = this.getStorageData(this.FNumber);
-    var data = object.getData();
-
-    data.forEach(element => {
-      this.message = this.message + element.type + " ";
-    });
-
-    this.message = this.message + ". Debug message.";
-  
   }
 
 }

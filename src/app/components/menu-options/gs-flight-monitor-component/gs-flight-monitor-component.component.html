@@ -1,3 +1,89 @@
-<p>
-  gs-flight-monitor-component works!
-</p>
+<div class="back-area">
+  <!--===================== Headers =====================-->
+  <!--===================================================-->
+  <p align="right">
+    Mexspace
+  </p>
+  <div class="headers" *ngIf="isPortSelected == false">
+    <h1 align="center">
+      Flight Monitor
+    </h1>
+    <p align="center">
+      To begin your flight please confirm your flight computer. Get prepared for reaching the starts.
+    </p>
+
+
+    <!--=====================================================-->
+    <!--======== Flight Computer selector button ============-->
+
+    <ng-template #content let-c="close" let-d="dismiss">
+
+      <div class="modal-header">
+        <h4 class="modal-title">Select the flight computer</h4>
+        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <button *ngFor="let port of tableData.dataRows" 
+          (click)="setPortID(port.comName)" 
+          (click)="d('Cross click')" 
+          type="button" 
+          class="btn btn-light">
+          {{ port.comName }}
+        </button>
+      </div>
+
+    </ng-template>
+
+    <button class="square-button" (click)="scanPorts(content)" *ngIf="isPortSelected == false">
+      Select the flight computer
+    </button>
+    <!--=====================================================-->
+  </div>
+  <!--=====================================================-->
+
+  <!--=====================================================-->
+  <!--================== Flight Monitor ===================-->
+      <div class="graph-card" *ngIf="isPortSelected == true">
+        <!--================ Real time graph ==================-->
+        <div class="graph">
+          <!--================ Altitude ==================-->
+          <div class="flex">
+            <div class="flex-item">
+              <div style="display: block;">
+                <canvas baseChart width="1000" height="500"
+                [datasets]="lineChartDataAltitude"
+                [labels]="lineCommonChartLabels"
+                [options]="lineChartOptions"
+                [colors]="lineChartColorsAltitude"
+                [legend]="lineChartLegend"
+                [chartType]="lineChartType"
+                [plugins]="lineChartPlugins"
+                (chartHover)="chartHovered($event)"
+                (chartClick)="chartClicked($event)"></canvas>
+              </div>
+            </div>
+        </div>
+        <div class="monitor-card">
+          <!--======================= Pad =========================-->
+          <div class="pest">
+            <h4>Initial conditions</h4>
+            <p>Position:  </p>
+            <p>Temperature:  </p>
+            <p>Pressure:  </p>
+            <p>Altitude:  {{ altitude }}</p>
+            <h4>Verification of systems</h4>
+            <p>Flight computer temperature: </p>
+            <p>Flight computer battery: </p>
+          </div>
+          <!--===================== Ascent =========================-->
+          <div class="pest">
+
+          </div>
+        </div>
+      </div>
+  <!--=====================================================-->
+
+</div>
